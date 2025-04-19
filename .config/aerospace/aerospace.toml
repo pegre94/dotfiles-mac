@@ -60,10 +60,10 @@ on-focused-monitor-changed = ['move-mouse window-force-center']
 [gaps]
 inner.horizontal = 8
 inner.vertical =   8
-outer.left =       8
-outer.bottom =     6
-outer.top =        6
-outer.right =      6
+outer.left =       3
+outer.bottom =     3
+outer.top =        3
+outer.right =      3
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -162,7 +162,7 @@ cmd-shift-semicolon = 'mode service'
 cmd-b = 'balance-sizes'
 
 cmd-r = ['flatten-workspace-tree', 'mode main'] # reset layout
-# cmd-f = ['layout floating tiling', 'mode main'] # Toggle between floating and tiling layout
+cmd-f = ['layout floating tiling', 'mode main'] # Toggle between floating and tiling layout
 
 cmd-backspace = ['close-all-windows-but-current', 'mode main']
 
