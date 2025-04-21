@@ -178,5 +178,10 @@ cmd-backspace = ['close-all-windows-but-current', 'mode main']
     4 = 'secondary'                   # Case insensitive regex substring
     5 = 'secondary'
 
+# Force windows with “Drodown” in the title to open floating
+[[on-window-detected]]
+if.window-title-regex-substring = 'Dropdown'
+run = ['layout floating']
+
 
 
