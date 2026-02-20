@@ -91,12 +91,8 @@ outer.right =      3
 # /Applications/iTerm.app'
 
 
-cmd-enter = ['''exec-and-forget osascript <<EOF
-tell application "iTerm2"
-    create window with default profile
-    activate
-end tell
-EOF''']
+cmd-enter = 'exec-and-forget open -na /Applications/WezTerm.app'
+cmd-n = 'exec-and-forget /bin/bash -c "/Applications/WezTerm.app/Contents/MacOS/wezterm start --always-new-process -- nvim"'
 
 cmd-shift-enter = 'exec-and-forget open -na "Google Chrome"'
 cmd-e = 'exec-and-forget emacsclient -c &'
@@ -108,17 +104,7 @@ cmd-slash = 'layout tiles horizontal vertical'
 cmd-comma = 'layout accordion horizontal vertical'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#focus
-cmd-h = 'focus --boundaries-action wrap-around-the-workspace --boundaries all-monitors-outer-frame left'
-cmd-left = 'focus --boundaries-action wrap-around-the-workspace --boundaries all-monitors-outer-frame left'
-
-cmd-j = 'focus --boundaries-action wrap-around-the-workspace --boundaries all-monitors-outer-frame down'
-cmd-down = 'focus --boundaries-action wrap-around-the-workspace --boundaries all-monitors-outer-frame down'
-
-cmd-k = 'focus --boundaries-action wrap-around-the-workspace --boundaries all-monitors-outer-frame up'
-cmd-up = 'focus --boundaries-action wrap-around-the-workspace --boundaries all-monitors-outer-frame up'
-
-cmd-l = 'focus --boundaries-action wrap-around-the-workspace --boundaries all-monitors-outer-frame right'
-cmd-right = 'focus --boundaries-action wrap-around-the-workspace --boundaries all-monitors-outer-frame right'
+# Navigation handled by Karabiner - passes through to WezTerm when focused, calls Aerospace CLI when not
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move
 cmd-shift-h = 'move left'
@@ -166,10 +152,10 @@ cmd-f = ['layout floating tiling', 'mode main'] # Toggle between floating and ti
 
 cmd-backspace = ['close-all-windows-but-current', 'mode main']
 
-# cmd-shift-h = ['join-with left', 'mode main']
-# cmd-shift-j = ['join-with down', 'mode main']
-# cmd-shift-k = ['join-with up', 'mode main']
-# cmd-shift-l = ['join-with right', 'mode main']
+ctrl-shift-h = ['join-with left', 'mode main']
+ctrl-shift-j = ['join-with down', 'mode main']
+ctrl-shift-k = ['join-with up', 'mode main']
+ctrl-shift-l = ['join-with right', 'mode main']
 
 [workspace-to-monitor-force-assignment]
     1 = 'main'                            # Monitor sequence number from left to right. 1-based indexing

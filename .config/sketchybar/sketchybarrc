@@ -78,11 +78,11 @@ sketchybar --default "${defaults[@]}"
 source "$ITEM_DIR/apple.sh"
 source "$ITEM_DIR/spaces.sh"
 source "$ITEM_DIR/front_app.sh"
-#source "$ITEM_DIR/yabai.sh"
 
 # Center
-#source "$ITEM_DIR/spotify.sh"
-# source "$ITEM_DIR/media.sh"
+source "$ITEM_DIR/spotify.sh"
+source "$ITEM_DIR/media.sh"
+source "$ITEM_DIR/noise.sh"
 
 # Right
 source "$ITEM_DIR/calendar.sh"
@@ -94,7 +94,7 @@ source "$ITEM_DIR/battery.sh"
 source "$ITEM_DIR/volume.sh"
 # source "$ITEM_DIR/svim.sh"
 
-# source "$ITEM_DIR/cpu.sh"
+source "$ITEM_DIR/cpu.sh"
 source "$ITEM_DIR/weather.sh"
 
 sketchybar --hotload on
