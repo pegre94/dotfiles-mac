@@ -103,7 +103,28 @@ return {
       },
     },
     config = function(_, opts)
-      require("nvim-treesitter.configs").setup(opts)
+      local ok_configs, configs = pcall(require, "nvim-treesitter.configs")
+      if ok_configs then
+        configs.setup(opts)
+        return
+      end
+
+      -- nvim-treesitter's newer API no longer exposes nvim-treesitter.configs.
+      -- Configure parser install dir and enable native Neovim treesitter highlighting.
+      local ok_ts, ts = pcall(require, "nvim-treesitter")
+      if ok_ts and ts.setup then
+        ts.setup({
+          install_dir = vim.fn.stdpath("data") .. "/site",
+        })
+      end
+
+      vim.api.nvim_create_autocmd("FileType", {
+        group = vim.api.nvim_create_augroup("treesitter-native-highlight", { clear = true }),
+        pattern = opts.ensure_installed or {},
+        callback = function()
+          pcall(vim.treesitter.start)
+        end,
+      })
     end,
   },
 }

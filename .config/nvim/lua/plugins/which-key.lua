@@ -58,6 +58,8 @@ return {
         { "<leader>f", group = "file" },
         { "<leader>g", group = "git" },
         { "<leader>h", group = "help" },
+        { "<leader>i", group = "Indra" },
+        { "<leader>m", group = "markdown" },
         { "<leader>o", group = "open" },
         { "<leader>p", group = "project" },
         { "<leader>q", group = "quit" },

@@ -22,13 +22,10 @@ return {
     keys = {
       -- Doom-style SPC keybindings
       { "<leader><leader>", "<cmd>Telescope commands<CR>", desc = "Commands (M-x)" },
-      { "<leader>.", "<cmd>Telescope find_files<CR>", desc = "Find file" },
       { "<leader>,", "<cmd>Telescope buffers<CR>", desc = "Switch buffer" },
-      { "<leader>/", "<cmd>Telescope live_grep<CR>", desc = "Search project" },
       { "<leader>'", "<cmd>Telescope resume<CR>", desc = "Resume last search" },
 
       -- File (SPC f)
-      { "<leader>ff", "<cmd>Telescope find_files<CR>", desc = "Find file" },
       { "<leader>fr", "<cmd>Telescope oldfiles<CR>", desc = "Recent files" },
       { "<leader>fR", "<cmd>Telescope oldfiles cwd_only=true<CR>", desc = "Recent files (cwd)" },
 
@@ -36,7 +33,6 @@ return {
       { "<leader>sb", "<cmd>Telescope current_buffer_fuzzy_find<CR>", desc = "Search buffer" },
       { "<leader>sd", "<cmd>Telescope diagnostics bufnr=0<CR>", desc = "Document diagnostics" },
       { "<leader>sD", "<cmd>Telescope diagnostics<CR>", desc = "Workspace diagnostics" },
-      { "<leader>sg", "<cmd>Telescope live_grep<CR>", desc = "Grep" },
       { "<leader>sh", "<cmd>Telescope help_tags<CR>", desc = "Help" },
       { "<leader>sk", "<cmd>Telescope keymaps<CR>", desc = "Keymaps" },
       { "<leader>sm", "<cmd>Telescope marks<CR>", desc = "Marks" },
@@ -44,12 +40,11 @@ return {
       { "<leader>sr", "<cmd>Telescope resume<CR>", desc = "Resume" },
       { "<leader>ss", "<cmd>Telescope lsp_document_symbols<CR>", desc = "Document symbols" },
       { "<leader>sS", "<cmd>Telescope lsp_dynamic_workspace_symbols<CR>", desc = "Workspace symbols" },
-      { "<leader>sw", "<cmd>Telescope grep_string<CR>", desc = "Word under cursor" },
 
       -- Project (SPC p)
       { "<leader>pp", "<cmd>Telescope projects<CR>", desc = "Switch project" },
-      { "<leader>pf", "<cmd>Telescope find_files<CR>", desc = "Find file in project" },
-      { "<leader>ps", "<cmd>Telescope live_grep<CR>", desc = "Search in project" },
+      { "<leader>pf", function() require("fff").find_files() end, desc = "Find file in project (FFF)" },
+      { "<leader>ps", function() require("fff").live_grep() end, desc = "Search in project (FFF)" },
 
       -- Git (SPC g)
       { "<leader>gc", "<cmd>Telescope git_commits<CR>", desc = "Commits" },
@@ -186,7 +181,7 @@ return {
     event = "VeryLazy",
     config = function()
       require("project_nvim").setup({
-        detection_methods = { "pattern", "lsp" },
+        detection_methods = { "pattern" },
         patterns = { ".git", "Makefile", "package.json", "Cargo.toml", ".project" },
         show_hidden = true,
         silent_chdir = true,
